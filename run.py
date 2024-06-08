@@ -6,6 +6,16 @@ from re import T
 from mujoco_py import load_model_from_path, MjSim, MjViewer
 import os
 import math
+import pdb
+from typing import Tuple
+
+
+
+
+def trial(a : Tuple[str, ...]=('a')):
+    if a : 
+        print("got")
+        print(a)
 
 
 def main():
@@ -15,13 +25,12 @@ def main():
     viewer = MjViewer(sim)
     sim_state = sim.get_state()
     while True:
-
         sim.step()
         viewer.render()
-        
+        print(sim_state.qpos)
         if os.getenv('TESTING') is not None:
             break
 
 
 if __name__ == "__main__":
-    main()
+    trial()  
