@@ -1,13 +1,10 @@
 from dataclasses import dataclass
 
 
-
-@dataclass
-class EnvConfig:
-    num_envs : int = 10
-
-
 @dataclass
 class RobotConfig:
     robot : str = "a1"
-    
+
+@dataclass
+class EnvConfig:
+    frame_skip : int = 1
