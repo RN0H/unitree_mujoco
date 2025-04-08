@@ -1,10 +1,12 @@
 import envs
 from envs.base.robot import Robot
-from configs.defs import RobotConfig, EnvConfig
+from configs.definitions import RobotConfig, EnvConfig
 
 
 def MujocoAppWrapper(RobotBaseClass):
-    model_path = f"{RobotConfig.robot}/xml/{RobotConfig.robot}.xml"
+    
+    model_path = f"{RobotConfig.robot}/urdf/{RobotConfig.robot}.urdf"
+
     class MujocoApp(RobotBaseClass):
         def __init__(self, model_path, frame_skip=1):
             super().__init__(model_path, frame_skip)
@@ -14,6 +16,4 @@ def MujocoAppWrapper(RobotBaseClass):
             self._step()
             pass
     return MujocoApp(model_path, EnvConfig.frame_skip)
-
-
 

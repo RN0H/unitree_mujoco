@@ -1,0 +1,29 @@
+mkdir -p $HOME/.mujoco/mujoco210
+ln -sf /Applications/MuJoCo.app/Contents/Frameworks/MuJoCo.framework/Versions/Current/Headers/ $HOME/.mujoco/mujoco210/include
+
+
+mkdir -p $HOME/.mujoco/mujoco210/bin
+ln -sf /Applications/MuJoCo.app/Contents/Frameworks/MuJoCo.framework/Versions/Current/libmujoco.2.1.1.dylib $HOME/.mujoco/mujoco210/bin/libmujoco210.dylib
+sudo ln -sf /Applications/MuJoCo.app/Contents/Frameworks/MuJoCo.framework/Versions/Current/libmujoco.2.1.1.dylib /usr/local/lib/
+ln -s /Applications/MuJoCo.app/Contents/Frameworks/MuJoCo.framework/Versions/Current/libmujoco.2.1.1.dylib $HOME/.mujoco/mjpro200/bin/
+
+# For M1 (arm64) mac users:
+# brew install glfw
+ln -sf /opt/homebrew/lib/libglfw.3.dylib $HOME/.mujoco/mujoco210/bin
+ln -s /Applications/MuJoCo.app/Contents/Frameworks/MuJoCo.framework/Versions/Current/libmujoco.2.1.1.dylib /Users/ge/.mujoco/mjpro200/bin/
+# remove old installation
+rm -rf /opt/homebrew/Caskroom/miniforge/base/lib/python3.9/site-packages/mujoco_py
+rsync -a /Applications/MuJoCo.app/Contents/Frameworks/MuJoCo.framework ~/miniforge3/envs/rl/lib/
+# which python
+# exit
+    
+export CC=/opt/homebrew/bin/gcc-11         # see https://github.com/openai/mujoco-py/issues/605
+pip install -r requirements.txt
+
+
+#copy the mujoco.framework/Versions/*  to the lib of the conda env!
+#The libmujoco.x.x.x.dylib should be avaialbe inside the lib of conda env!
+#then we good!
+
+
+#reference : https://github.com/openai/mujoco-py/issues/682

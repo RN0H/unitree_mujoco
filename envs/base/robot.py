@@ -6,6 +6,7 @@ import numpy as np
 from os import path
 import gym
 import mujoco_py as mjpy
+import mujoco as mj
 
 def convert_observation_to_space(observation):
     if isinstance(observation, dict):
